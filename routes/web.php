@@ -23,3 +23,10 @@ Route::post('/homes', 'HomeController@store');
 Route::get('/homes/nuevo', 'HomeController@create')
     ->name('homes.create');
 
+Route::get('/homes/{recordatoris}', 'HomeController@show')
+->where('home', '[0-9]+')
+->name('homes.show');
+
+Route::delete('/homes/{recordatoris}', 'HomeController@destroy')->name('homes.destroy');
+
+

@@ -46,5 +46,17 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
+    public function show(User $user)
+    {
+        //$user = User::findOrFail($id);
+
+       /* if($user == null){El metodo findOrFail nos soluciona este if
+            return response()->view('errors.404', [], 404);
+        }*/
+        $recordatoris = DB::table('recordatori')->where('home_id', '1')->get();
+        return view('show', compact('recordatoris'));
+    }
+
+
     
 }

@@ -34,6 +34,14 @@
                         <tr>
                             <th scope="row">{{ $home->id }}</th>
                             <td> {{ $home->name }}</td>
+                            <td>
+                                <form action="{{ route('homes.destroy', $home) }}" method = "POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <a href="{{ route('homes.show', $home) }}" class="btn btn-link"><i class="far fa-eye"></i></a>
+                                    <button type="submit" class="btn btn-link"><i class="fas fa-trash-alt"></i></button>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                         </tbody>
