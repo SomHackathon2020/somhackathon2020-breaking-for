@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="d-flex justify-content-between align-items-end mb-3">
+        <h1 class="pb-1">{{ $title }}</h1>
+        <p>
+            <a href="{{ route('homes.create') }}" class="btn btn-primary">Nueva Home</a>
+        </p>
+</div>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
