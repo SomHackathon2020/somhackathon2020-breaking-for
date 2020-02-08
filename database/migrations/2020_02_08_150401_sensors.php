@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Recordatori extends Migration
+class Sensors extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class Recordatori extends Migration
      */
     public function up()
     {
-        Schema::create('recordatori', function (Blueprint $table) {
+        Schema::create('sensor', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name'); 
-            $table->datetime ('hora'); 
+            $table->char('name', 100);
+            $table->boolean('active');
 
             $table->unsignedBigInteger('home_id')->nullable();
-            $table->foreign('home_id')->references('id')->on('home');
-        });
+            $table->foreign('home_id')->references('id')->on('home');        
+        });    
     }
 
     /**
@@ -31,6 +31,6 @@ class Recordatori extends Migration
     public function down()
     {
         //
+        $table->dropIfExists('sensor');
     }
 }
-

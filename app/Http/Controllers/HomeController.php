@@ -55,7 +55,8 @@ class HomeController extends Controller
             
         }*/
         $recordatoris = DB::table('recordatori')->where('home_id', $home)->get();
-        return view('show', compact('recordatoris'));
+        $sensors = DB::table('sensor')->where('home_id', $home)->get();
+        return view('show', compact('recordatoris','sensors'));
     }
 
 

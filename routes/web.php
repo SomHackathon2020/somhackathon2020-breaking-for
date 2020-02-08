@@ -24,6 +24,8 @@ Route::get('/homes/nuevo', 'HomeController@create')
     ->name('homes.create');
 
 Route::post('/recordatoris', 'HomeController@store');
+Route::post('/homes/changeState/{sensor}', 'SensorController@changeState')->name('homes.changeState');
+
 Route::get('/recordatori/nuevo', 'HomeController@create')
 ->name('recordatori.create');
 
