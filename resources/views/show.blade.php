@@ -1,33 +1,36 @@
-@extends('layout')
+@extends('layouts.app')
 
-@section('title', "Recordatorios")
+@section('title', "Recordatoris")
 
 @section('content')
+<p>
+    <a href="{{ route('recordatori.create') }}" class="btn btn-primary">Nueva Home</a>
+</p>
 
-    @foreach($recordatorios as $recordatorio)
-        <tr>
-            <th scope="row">{{ $recordatorio->id }}</th>
-            <td> {{ $recordatorio->name }}</td>
-            <td> {{ $recordatorio->Hora }}</td>
+@if ($recordatoris->isNotEmpty())
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Hora</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($recordatoris as $recordatori)
+            <tr>
+                <th scope="row">{{ $recordatori->id }}</th>
+                <td> {{ $recordatori->name }}</td>
+                <td> {{ $recordatori->hora }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    
+@else
+    <p>No hay Recordatorios registrados.</p>
+@endif
 
-        </tr>
-    @endforeach
-
-    <h1>Home #{{ $user->id }}</h1>
-
-
-    <p>Nombre del usuario: {{$user->name}}</p>
-    <p>Correo electrónico: {{$user->email}}</p>
-
-    <p>
-        <!--<a href="{{url('/usuarios')}}">Go Back</a>-->
-            <a href="{{route('home')}}">Go Back</a>
-    </p>
-
-    <!--Hace lo mismo que el link de arriba
-    <p>
-        <a href="{{action('UserController@index')}}">Go Back</a>
-
-    </p>
-    -->
+<p>
+    <a href="{{route('home')}}">Go Back</a>
+</p>
 @endsection

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
 use App\{
-    Http\Requests\CreateHomeRequest, Home,
+    Http\Requests\CreateHomeRequest, Home, Recordatori, 
 };
 
 class HomeController extends Controller
@@ -46,14 +46,15 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
-    public function show(User $user)
+    public function show($home)
     {
-        //$user = User::findOrFail($id);
 
        /* if($user == null){El metodo findOrFail nos soluciona este if
             return response()->view('errors.404', [], 404);
+
+            
         }*/
-        $recordatoris = DB::table('recordatori')->where('home_id', '1')->get();
+        $recordatoris = DB::table('recordatori')->where('home_id', $home)->get();
         return view('show', compact('recordatoris'));
     }
 
