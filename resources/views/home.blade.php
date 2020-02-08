@@ -14,7 +14,26 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    @if ($homes->isNotEmpty())
+                    <table class="table">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($homes as $home)
+                        <tr>
+                            <th scope="row">{{ $home->id }}</th>
+                            <td> {{ $home->name }}</td>
+                        </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    @else
+                        <p>No hay homes registrados.</p>
+                    @endif
                 </div>
             </div>
         </div>

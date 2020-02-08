@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\{
+    Home,
+};
+
 class HomeController extends Controller
 {
     /**
@@ -23,6 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $homes = Home::all();
+        $title = 'Listado de casas';
+        return view('home', compact('title', 'homes'));
     }
 }
