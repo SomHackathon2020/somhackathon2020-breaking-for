@@ -18,7 +18,7 @@ class Recordatori extends Model
      * @var array
      */
     protected $fillable = [
-        'name','hora',
+    'name','hora','home_id','activa',
     ];
 
     protected $table = 'recordatori';

@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
 use App\{
-    Http\Requests\CreateHomeRequest, Home, Recordatori, 
+    Http\Requests\CreateHomeRequest, Home, Recordatori,
+    Http\Requests\CreateRecordatoriRequest,
 };
 
 class HomeController extends Controller
@@ -39,9 +40,21 @@ class HomeController extends Controller
         return view('create');
     }
 
+    public function createRecordatori($home)
+    {
+        return view('createRecordatori',compact('home'));
+    }
+
     public function store(CreateHomeRequest $request)
     {
-        $request->createHome();
+        $request->createHome($home);
+
+        return redirect()->route('home');
+    }
+
+    public function storeRecordatori(CreateRecordatoriRequest $request)
+    {
+        $request->createRecordatori();
 
         return redirect()->route('home');
     }
@@ -57,6 +70,7 @@ class HomeController extends Controller
         $recordatoris = DB::table('recordatori')->where('home_id', $home)->get();
         $sensors = DB::table('sensor')->where('home_id', $home)->get();
         return view('show', compact('recordatoris','sensors','home'));
+
     }
 
 
