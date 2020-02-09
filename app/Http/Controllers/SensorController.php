@@ -6,9 +6,32 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
+use App\{
+    Http\Requests\CreateSensorRequest, Home 
+};
+
 class SensorController extends Controller
 {
-    //
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function create($home){
+        return view('createSensor', compact('home'));
+    }
+
+    public function store(CreateSensorRequest $request, $home)
+    {
+        $request->createSensor($home);
+
+        return redirect()->route('home');
+    }
 
     public function changeState($sensor){
         //dd($sensor);

@@ -23,7 +23,13 @@ Route::post('/homes', 'HomeController@store');
 Route::get('/homes/nuevo', 'HomeController@create')
     ->name('homes.create');
 
+Route::post('/saveSensor/{home}', 'SensorController@store');
+Route::get('/newSensor/{home}', 'SensorController@create')
+->name('createSensor');
+
+
 Route::post('/recordatoris', 'HomeController@store');
+
 Route::post('/homes/changeState/{sensor}', 'SensorController@changeState')->name('homes.changeState');
 
 Route::get('/recordatori/nuevo', 'HomeController@create')

@@ -6,6 +6,7 @@
         <p>
             <a href="{{ route('homes.create') }}" class="btn btn-primary">Nueva Home</a>
         </p>
+        
 </div>
 
 <div class="container">

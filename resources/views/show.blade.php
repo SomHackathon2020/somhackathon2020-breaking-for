@@ -4,10 +4,14 @@
 
 @section('content')
 <p>
+    <a href="{{route('home')}}" class="btn btn-secondary">Go Back</a>
     <a href="{{ route('recordatori.create') }}" class="btn btn-primary">Nueva Home</a>
+    <a href="{{ route('createSensor', $home) }}" class="btn btn-primary">Nuevo Sensor</a>
 </p>
 
 @if ($recordatoris->isNotEmpty())
+    <div>
+    <h6> Recordatoris </h6>
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -29,8 +33,11 @@
 @else
     <p>No hay Recordatorios registrados.</p>
 @endif
-
+    </div>
 @if ($sensors->isNotEmpty())
+<h6> Sensors </h6>
+
+<div>
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -62,7 +69,6 @@
     <p>No hay Sensors registrados.</p>
 @endif
 
-<p>
-    <a href="{{route('home')}}">Go Back</a>
-</p>
+
 @endsection
+</div>
