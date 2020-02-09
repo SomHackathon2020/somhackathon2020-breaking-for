@@ -20,11 +20,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/homes', 'HomeController@store');
+Route::post('/recordatorisHome', 'HomeController@storeRecordatori');
+
 Route::get('/homes/nuevo', 'HomeController@create')
     ->name('homes.create');
 
 Route::post('/recordatoris', 'HomeController@store');
-Route::get('/recordatori/nuevo', 'HomeController@create')
+
+Route::get('/recordatori/nuevo/{home}', 'HomeController@createRecordatori')
 ->name('recordatori.create');
 
 Route::get('/homes/{recordatoris}', 'HomeController@show')
