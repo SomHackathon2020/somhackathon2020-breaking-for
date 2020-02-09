@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="d-flex justify-content-around align-items-end mb-3">
         <h1 class="pb-1">Les meves cases</h1>
         <p>
@@ -33,18 +34,20 @@
                         </thead>
                         <tbody>
                         @foreach($homes as $home)
-                        <tr>
-                            <th scope="row">{{ $home->id }}</th>
-                            <td> {{ $home->name }}</td>
-                            <td>
-                                <form action="{{ route('homes.destroy', $home) }}" method = "POST">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <a href="{{ route('homes.show', $home) }}" class="btn btn-link"><i class="far fa-eye"></i></a>
-                                    <button type="submit" class="btn btn-link"><i class="fas fa-trash-alt"></i></button>
-                                </form>
-                            </td>
-                        </tr>
+                            @if ($home->user1_id == auth()->user()->id || $home->user2_id == auth()->user()->id)
+                            <tr>
+                                <th scope="row">{{ $home->id }}</th>
+                                <td> {{ $home->name }}</td>
+                                <td>
+                                    <form action="{{ route('homes.destroy', $home) }}" method = "POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <a href="{{ route('homes.show', $home) }}" class="btn btn-link"><i class="far fa-eye"></i></a>
+                                        <button type="submit" class="btn btn-link"><i class="fas fa-trash-alt"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endif
                         @endforeach
                         </tbody>
                     </table>

@@ -24,7 +24,7 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nombre</th>
+                                <th scope="col">Nom</th>
                                 <th scope="col">Hora</th>
                                 <th scope="col"></th>
                             </tr>
@@ -34,8 +34,8 @@
                             <tr>
                                 <th scope="row">{{ $recordatori->id }}</th>
                                 <td> {{ $recordatori->name }}</td>
-                                <td value="{{ $recordatori->hora }}"> {{ $recordatori->hora }}</td>
-                                <td></td>
+                                <td id="{{ $recordatori->id }}" value="{{ $recordatori->hora }}"> {{ $recordatori->hora }}</td>
+                                <td><button class="btn btn-primary btn-sm" onclick="recorda()">Activa</button></td>
                             </tr>
                             @endforeach
                         </tbody>

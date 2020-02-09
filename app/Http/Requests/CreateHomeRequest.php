@@ -6,6 +6,7 @@ use App\Home;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class CreateHomeRequest extends FormRequest
 {
@@ -34,18 +35,27 @@ class CreateHomeRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'El campo nombre es obligatorio'
+            'name.required' => 'El campo nombre es obligatorio',
         ];
     }
 
-    public function createHome()
+    public function createHome($token_home)
     {
-        DB::transaction(function(){
-            $data = $this->validated();
 
-            $home = Home::create([
-                'name' => $data['name'],
-            ]);
-        });
+        $home_found = DB::table('home')->where('token_home', $token_home)->get();
+
+        if($home_found->isNotEmpty()){
+            DB::table('home')->where('id',$home_found[0]->id)->update(['user2_id' => auth()->user()->id]);
+        }else{
+            DB::transaction(function(){
+                $data = $this->validated();
+
+                $home = Home::create([
+                    'name' => $data['name'],
+                    'user1_id' => auth()->user()->id,
+                    'token_home' => Str::random(8),
+                ]);
+            });
+        }
     }
 }

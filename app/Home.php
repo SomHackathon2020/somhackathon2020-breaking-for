@@ -18,8 +18,24 @@ class Home extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        'name', 'user1_id', 'user2_id', 'token_home'
     ];
 
     protected $table = 'home';
+
+    public function user1(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function user2(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function recordatoris(){
+        return $this->hasMany(Recordatori::class);
+    }
+
+    public function sensor(){
+        return $this->hasMany(Sensor::class);
+    }
 }

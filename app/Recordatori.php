@@ -22,4 +22,8 @@ class Recordatori extends Model
     ];
 
     protected $table = 'recordatori';
+
+    public function home(){
+        return $this->belongsTo(Home::class);
+    }
 }

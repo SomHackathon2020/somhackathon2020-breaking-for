@@ -16,10 +16,13 @@ class Recordatori extends Migration
         Schema::create('recordatori', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name'); 
-            $table->datetime ('hora'); 
+            $table->integer ('hora'); 
 
             $table->unsignedBigInteger('home_id')->nullable();
             $table->foreign('home_id')->references('id')->on('home');
+            $table->boolean ('activa'); 
+        
+
         });
     }
 

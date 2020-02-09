@@ -9,7 +9,9 @@
 
                 <div class="form-group">
                     <label for="name">Nombre: </label>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Casa ejempo" value="{{old('name')}}">
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Nom casa" value="{{old('name')}}">
+                <label for="name">Token de la casa: </label>
+                    <input type="text" class="form-control" name="token_home" id="token_home" placeholder="Token casa" value="{{old('token_home')}}">
                 </div>
                 <div class="form-group mt-4">
                     <button type="submit" class="btn btn-primary">Crear home</button>

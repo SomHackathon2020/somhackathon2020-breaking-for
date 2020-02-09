@@ -12,4 +12,8 @@ class sensor extends Model
     protected $fillable = [
         'name', 'active', 'home_id'
     ];
+
+    public function home(){
+        return $this->hasOne(Home::class);
+    }
 }

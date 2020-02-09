@@ -47,8 +47,7 @@ class HomeController extends Controller
 
     public function store(CreateHomeRequest $request)
     {
-        $request->createHome($home);
-
+        $request->createHome($request->token_home);
         return redirect()->route('home');
     }
 
