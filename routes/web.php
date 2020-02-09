@@ -41,6 +41,10 @@ Route::get('/homes/{recordatoris}', 'HomeController@show')
 ->where('home', '[0-9]+')
 ->name('homes.show');
 
-Route::delete('/homes/{recordatoris}', 'HomeController@destroy')->name('homes.destroy');
+Route::delete('/homes/{home}', 'HomeController@destroy')->name('homes.destroy');
 
+
+Route::delete('/recordatori/{recordatori}', 'HomeController@destroyRecordatori')->name('recordatoris.destroy');
+
+Route::delete('/sensor/{sensor}', 'SensorController@destroy')->name('sensors.destroy');
 

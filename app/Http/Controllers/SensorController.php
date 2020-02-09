@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
 use App\{
-    Http\Requests\CreateSensorRequest, Home 
+    Http\Requests\CreateSensorRequest, Home, Sensor
 };
 
 class SensorController extends Controller
@@ -41,5 +41,12 @@ class SensorController extends Controller
         $result = DB::table('sensor')->where('id', $sensor)->update(['active' => $changedValue]);
 
         return redirect('homes/'.$home_id);
+    }
+
+    public function destroy(Sensor $sensor)
+    {
+        $sensor->delete();
+
+        return redirect()->route('home');
     }
 }

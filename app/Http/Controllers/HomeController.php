@@ -73,5 +73,20 @@ class HomeController extends Controller
     }
 
 
+    public function destroy(Home $home)
+    {
+        $home->delete();
+
+        return redirect()->route('home');
+    }
+
+    public function destroyRecordatori(Recordatori $recordatori)
+    {
+        $recordatori->delete();
+
+        return redirect()->route('home');
+    }
+
+   
     
 }
