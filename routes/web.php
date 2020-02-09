@@ -35,8 +35,7 @@ Route::post('/recordatoris', 'HomeController@store');
 Route::post('/homes/changeState/{sensor}', 'SensorController@changeState')->name('homes.changeState');
 
 Route::get('/recordatori/nuevo/{home}', 'HomeController@createRecordatori')
-
-->name('recordatori.create');
+    ->name('recordatori.create');
 
 Route::get('/homes/{recordatoris}', 'HomeController@show')
 ->where('home', '[0-9]+')

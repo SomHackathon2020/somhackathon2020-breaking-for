@@ -6,9 +6,9 @@
 <div class="d-flex justify-content-around">
 
     <p>
-        <a href="{{route('home')}}" class="btn btn-secondary">Go Back</a>
-        <a href="{{ route('recordatori.create') }}" class="btn btn-primary">Nueva Home</a>
-        <a href="{{ route('createSensor', $home) }}" class="btn btn-primary">Nuevo Sensor</a>
+        <a href="{{route('home')}}" class="btn btn-secondary">Enrere</a>
+        <a href="{{ route('recordatori.create', $home) }}" class="btn btn-primary">Nou Recordatori</a>
+        <a href="{{ route('createSensor', $home) }}" class="btn btn-primary">Nou Sensor</a>
     </p>
 </div>
 <h6> Recordatoris </h6>
